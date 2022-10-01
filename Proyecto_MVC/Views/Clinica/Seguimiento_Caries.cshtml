@@ -1,0 +1,78 @@
+﻿@model IEnumerable<G4_Proyecto.Models.Paciente>
+
+@{
+    ViewData["Title"] = "Seguimiento_Caries";
+}
+
+<h1>Seguimiento Caries</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Edad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lconsulta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pconsulta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnostico)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lconsulta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pconsulta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diagnostico)
+                </td>
+                <td>
+                    @Html.ActionLink("Programar Cita", "ProgramarCita", new { id = item.ID }) |
+                    @Html.ActionLink("Eliminar Paciente", "Borrar", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index">Regresar</a>
+</div>

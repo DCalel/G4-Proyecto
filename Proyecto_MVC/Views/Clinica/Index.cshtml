@@ -1,0 +1,104 @@
+﻿@model IEnumerable<G4_Proyecto.Models.Paciente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>Clínica Dental “Sonrisa 10/10”</h1>
+
+<p>
+    <h2>
+        <span class="badge badge-pill">
+            <a asp-action="Create">Agregar Nuevo Paciente</a>
+        </span>
+    </h2>
+</p>
+
+<span class="badge badge-pill">
+    <a asp-action="Seguimiento">Limpieza</a> |
+    <a asp-action="Seguimiento_Ortodoncia">Ortodoncia</a> |
+    <a asp-action="Seguimiento_Caries">Caries</a> |
+    <a asp-action="Seguimiento_Otros">Otros</a>
+</span>
+
+<h3>
+    <span style="color: red;">
+        @TempData["Mensaje"]
+    </span>
+</h3>
+
+<form asp-action="Buscar">
+    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
+    <p>
+
+    </p>
+    <input name="id" type="text" value="" class="form-control" />
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Edad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lconsulta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pconsulta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnostico)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lconsulta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pconsulta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diagnostico)
+                </td>
+                <td>
+                    @Html.ActionLink("Programar Cita", "ProgramarCita", new { id = item.ID }) |
+                    @Html.ActionLink("Eliminar Paciente", "Borrar", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
